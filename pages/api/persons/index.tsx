@@ -10,7 +10,7 @@ interface Billions {
 }
 
 async function handler(req: NextApiRequest, res:NextApiResponse) {
-    const { data } = await axios.get<Billions[]>('https://billions-api.nomadcoders.workers.dev/?page=1')
+    const { data } = await axios.get<Billions[]>('https://billions-api.nomadcoders.workers.dev')
     return res.json({ ok: true, billions: data })
 }
 
