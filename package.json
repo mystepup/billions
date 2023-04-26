@@ -1,6 +1,6 @@
 {
-  "name": "nextjs-blueprint",
-  "version": "1.0.0",
+  "name": "billions",
+  "version": "0.0.1",
   "scripts": {
     "dev": "next",
     "build": "next build",
@@ -20,6 +20,7 @@
   "devDependencies": {
     "@types/node": "^18.16.1",
     "@types/react": "^18.2.0",
+    "prettier": "^2.8.8",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.4"
   }
