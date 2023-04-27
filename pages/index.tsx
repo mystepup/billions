@@ -1,8 +1,10 @@
-import { NextPage } from "next";
-import useSWR, { SWRConfig } from "swr";
-import axios from "axios";
+import { NextPage } from 'next'
+import useSWR, { SWRConfig } from 'swr'
+import axios from 'axios'
+import Image from 'next/image'
+import Link from 'next/link'
 
-interface Billions {
+interface Billion {
   id: string
   name: string
   squareImage: string
@@ -11,36 +13,66 @@ interface Billions {
 }
 
 interface BillionsResponse {
-  ok: true;
-  billions: Billions[]
+  ok: true
+  billions: Billion[]
 }
 
 const Home: NextPage = () => {
-  const { data } = useSWR<BillionsResponse>("/api/persons")
-  return <div>{data?.billions?.map(billion => <div key={billion.id}>{billion.name}</div>)}</div>
+  const { data } = useSWR<BillionsResponse>('/api/person')
+  return (
+    <div>
+      {data?.billions?.map((billion) => (
+        <Link href={`/person/${billion.id}`} key={billion.id}>
+          <div>
+            <h2>{billion.name}</h2>
+            {billion.squareImage === 'https:undefined' ? null : (
+              <Image
+                width={48}
+                height={48}
+                src={billion.squareImage}
+                placeholder="blur"
+                blurDataURL="/blur.png"
+              />
+            )}
+            <div>{billion.netWorth}</div>
+            <div>
+              {billion.industries?.map((industry) => (
+                <span>{industry}</span>
+              ))}
+            </div>
+          </div>
+        </Link>
+      ))}
+    </div>
+  )
 }
 
-const Page: NextPage<{ billions: Billions[] }> = ({ billions }) => {
+const Page: NextPage<{ billions: Billion[] }> = ({ billions }) => {
   return (
-    <SWRConfig value={{
-      fallback: {
-        "/api/persons": {
-          ok: true,
-          billions
-        }
-      }
-    }}>
+    <SWRConfig
+      value={{
+        fallback: {
+          '/api/person': {
+            ok: true,
+            billions,
+          },
+        },
+      }}
+    >
       <Home />
     </SWRConfig>
   )
 }
 
 export async function getServerSideProps() {
-  const { data } = await axios.get<Billions[]>("https://billions-api.nomadcoders.workers.dev")
+  const { data } = await axios.get<Billion[]>(
+    'https://billions-api.nomadcoders.workers.dev'
+  )
   return {
     props: {
-      billions: data
-    }
+      ok: true,
+      billions: data,
+    },
   }
 }
 

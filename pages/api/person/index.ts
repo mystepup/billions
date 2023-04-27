@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import axios from 'axios'
 
-interface Billions {
+interface Billion {
   id: string
   name: string
   squareImage: string
@@ -10,7 +10,7 @@ interface Billions {
 }
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { data } = await axios.get<Billions[]>(
+  const { data } = await axios.get<Billion[]>(
     'https://billions-api.nomadcoders.workers.dev'
   )
   return res.json({ ok: true, billions: data })
