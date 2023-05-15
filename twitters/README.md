@@ -1,42 +1,4 @@
-# Hello World example
-
-## How to use
-
-### Using `create-next-app`
-
-Execute [`create-next-app`](https://github.com/segmentio/create-next-app) with [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) or [npx](https://github.com/zkat/npx#readme) to bootstrap the example:
-
-```bash
-npx create-next-app --example hello-world hello-world-app
-# or
-yarn create next-app --example hello-world hello-world-app
-```
-
-### Download manually
-
-Download the example:
-
-```bash
-curl https://codeload.github.com/zeit/next.js/tar.gz/canary | tar -xz --strip=2 next.js-canary/examples/hello-world
-cd hello-world
-```
-
-Install it and run:
-
-```bash
-npm install
-npm run dev
-# or
-yarn
-yarn dev
-```
-
-Deploy it to the cloud with [now](https://zeit.co/now) ([download](https://zeit.co/download))
-
-```bash
-now
-```
-
-## The idea behind the example
-
-This example shows the most basic idea behind Next. We have 2 pages: `pages/index.js` and `pages/about.js`. The former responds to `/` requests and the latter to `/about`. Using `next/link` you can add hyperlinks between them with universal routing capabilities. The `day` directory shows that you can have subdirectories.
+1. 유저가 로그인 되어 있지 않으면 /xx 페이지(/log-in, /create-account제외)는 /log-in 페이지로 리다이렉트 되어야 한다. \
+   a. /log-in페이지에서는 /create-account페이지로 이동할 수 있어야 한다.
+2. 유저가 계정을 생성한 후에는 /log-in 페이지로 리다이렉트 되어야 한다.
+3. 유저가 로그인 할 때에는 / 으로 리다이렉트 하여 그들의 프로필을 볼 수 있어야 한다.
