@@ -10,31 +10,12 @@ interface InputProps {
 const Input = ({ label, name, register, required }: InputProps) => {
   return (
     <div>
-      {name === "password" ? (
-        <div className="flex items-center justify-between">
-          <label
-            htmlFor={name}
-            className="block text-sm font-medium leading-6 text-gray-900"
-          >
-            {label}
-          </label>
-          <div className="text-sm">
-            <a
-              href="#"
-              className="font-semibold text-[#1D9BF0] hover:text-blue-300"
-            >
-              Forgot password?
-            </a>
-          </div>
-        </div>
-      ) : (
-        <label
+      <label
           htmlFor={name}
           className="block text-sm font-medium leading-6 text-gray-900"
-        >
-          {label}
-        </label>
-      )}
+      >
+        {label}
+      </label>
       <div className="mt-2">
         <input
           id={name}
