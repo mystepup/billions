@@ -26,7 +26,6 @@ const CreateAccount = () => {
     if (loading) {
       return;
     }
-    console.log(name, email, password);
     createAccount({ name, email, password });
   };
 

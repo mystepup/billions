@@ -2,10 +2,10 @@ import React from "react";
 import useUser from "../lib/client/useUser";
 
 const Home = () => {
-  const { user, isLoading } = useUser();
+  const { user } = useUser();
   return (
     <div>
-      <h1>Hello</h1>
+      <h1>Hello {user?.name}</h1>
     </div>
   );
 };
