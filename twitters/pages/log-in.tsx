@@ -1,15 +1,37 @@
 import { useForm } from "react-hook-form";
 import Input from "../components/Input";
 import Link from "next/link";
+import useMutation from "../lib/client/useMutation";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 interface LoginForm {
   email: string;
   password: string;
 }
 
+interface LoginResponse {
+  ok: boolean;
+  message?: string;
+}
+
 const Login = () => {
+  const router = useRouter();
   const { register, handleSubmit } = useForm<LoginForm>();
-  const onValid = () => {};
+  const [login, { data, loading }] = useMutation<LoginResponse>("/api/log-in");
+  const onValid = ({ email, password }: LoginForm) => {
+    if (loading) {
+      return;
+    }
+    login({ email, password });
+  };
+
+  useEffect(() => {
+    if (data && data.ok) {
+      router.replace("/");
+    }
+  }, [data]);
+
   return (
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
