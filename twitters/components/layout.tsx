@@ -27,7 +27,7 @@ export default function Layout({ seoTitle, children }: LayoutProps) {
             </svg>
           </span>
         </div>
-        <div className="pt-12 bg-slate-100">{children}</div>
+        <div className="pt-12 w-full max-w-xl">{children}</div>
       </div>
     </div>
   );
