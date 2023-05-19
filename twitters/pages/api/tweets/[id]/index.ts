@@ -8,12 +8,22 @@ async function handler(
   res: NextApiResponse<ResponseType>
 ) {
   try {
-    const { id } = req.query;
+    const {
+      query: { id },
+      session: { user },
+    } = req;
     const tweet = await db.tweet.findUnique({
       where: { id: +id },
       include: { user: true },
     });
-    return res.json({ ok: true, tweet });
+
+    const favs = await db.fav.findFirst({
+      where: {
+        tweetId: +id,
+        userId: user?.id,
+      },
+    });
+    return res.json({ ok: true, tweet, isLiked: favs !== null });
   } catch (error) {
     console.error(error);
     return res.json({ ok: false });
