@@ -34,7 +34,7 @@ export default function Upload() {
   }, [data]);
 
   return (
-    <Layout seoTitle={"Upload Tweet"}>
+    <Layout seoTitle={"Upload TweetItem"}>
       <div className="p-4">
         <form onSubmit={handleSubmit(onValid)}>
           <Input

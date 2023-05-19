@@ -21,7 +21,7 @@ model User {
   favs      Fav[]
 }
 
-model Tweet {
+model TweetItem {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

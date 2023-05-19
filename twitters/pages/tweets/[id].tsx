@@ -27,7 +27,7 @@ export default function TweetDetail() {
   };
 
   return (
-    <Layout seoTitle="Tweet Detail">
+    <Layout seoTitle="TweetItem Detail">
       <div className="mt-5">
         <h1 className="text-xl text-gray-700">{data?.tweet?.title}</h1>
         <div className="flex items-center gap-2">
