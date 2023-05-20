@@ -1,0 +1,5 @@
+name = "visitors-workers"
+main = "src/worker.ts"
+compatibility_date = "2023-05-19"
+
+kv_namespaces = [{ binding = "view_counter", id = "88ed970beefc4f9a9d87d0724cfb5a41", preview_id = "ef6f330f6ae44b88b11d01eaad5a96e4" }]
